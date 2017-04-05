@@ -17,4 +17,14 @@ public class Shop {
     private String shopName;
     private Address address;
     private boolean locked;
+
+    public Shop withShopName(String shopName) {
+        this.shopName = shopName;
+        return this;
+    }
+
+    public Shop withAddress(Address address) {
+        this.address = address;
+        return this;
+    }
 }

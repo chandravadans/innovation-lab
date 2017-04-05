@@ -1,7 +1,6 @@
 package com.innovationlabs.api.dao;
 
 import lombok.Data;
-import org.springframework.data.geo.Point;
 
 import javax.persistence.Embeddable;
 
@@ -13,5 +12,26 @@ import javax.persistence.Embeddable;
 public class Address {
     private String address;
     private Integer postCode;
-    private Point location;
+    private Double latitude;
+    private Double longitude;
+
+    public Address withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public Address withPostCode(Integer postCode) {
+        this.postCode = postCode;
+        return this;
+    }
+
+    public Address withLatitude(Double latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
+    public Address withLongitude(Double longitude) {
+        this.longitude = longitude;
+        return this;
+    }
 }
