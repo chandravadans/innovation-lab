@@ -7,9 +7,9 @@ import lombok.Data;
  */
 @Data
 public class Geocode {
-    Double latitude;
-    Double longitude;
-    Integer postCode;
+    private Double latitude;
+    private Double longitude;
+    private Integer postCode;
 
     public Geocode withLat(Double latitude) {
         this.latitude = latitude;
