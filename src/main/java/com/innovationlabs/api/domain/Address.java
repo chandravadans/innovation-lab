@@ -1,7 +1,10 @@
 package com.innovationlabs.api.domain;
 
 import lombok.Data;
+import org.hibernate.annotations.Type;
+import org.springframework.data.geo.Point;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 /**
@@ -10,9 +13,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 @Data
 public class Address {
-    String address;
-    Integer postCode;
-    Double latitude;
-    Double longitude;
-
+    private String address;
+    private Integer postCode;
+    private Point location;
 }

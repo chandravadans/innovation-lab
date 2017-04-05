@@ -14,7 +14,7 @@ import javax.persistence.Id;
 public class Shop {
     @Id
     @Column(unique = true)
-    String shopName;
-    Address address;
-    boolean locked;
+    private String shopName;
+    private Address address;
+    private boolean locked;
 }
