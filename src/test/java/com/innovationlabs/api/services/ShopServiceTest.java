@@ -3,6 +3,7 @@ package com.innovationlabs.api.services;
 import com.innovationlabs.api.dao.Address;
 import com.innovationlabs.api.dao.Shop;
 import com.innovationlabs.api.repositories.ShopRepository;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +26,12 @@ public class ShopServiceTest {
 
     @Autowired
     ShopRepository shopRepository;
+
+    @After
+    public void cleanUp() {
+        logger.info("Cleaning up");
+        shopRepository.deleteAll();
+    }
 
     @Test
     public void insertsShop() throws Exception {
