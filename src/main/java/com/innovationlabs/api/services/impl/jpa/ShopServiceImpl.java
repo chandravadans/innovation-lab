@@ -1,4 +1,4 @@
-package com.innovationlabs.api.jpa;
+package com.innovationlabs.api.services.impl.jpa;
 
 import com.innovationlabs.api.dao.Address;
 import com.innovationlabs.api.dao.Geocode;
@@ -9,12 +9,12 @@ import com.innovationlabs.api.services.ShopService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -96,13 +96,44 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
-    public Page<Shop> findAllShops(Pageable pageable) throws DataAccessException {
+    public Page<Shop> findAllShops(Pageable pageable) throws Exception {
         return shopRepository.findAll(pageable);
     }
 
     @Override
-    public Page<Shop> findNearestShops(Double latitude, Double longitude, Pageable pageable) throws DataAccessException {
-
-        return null;
+    public Shop findNearestShop(Double latitude, Double longitude) throws Exception {
+        Double latitudeDelta = 1.0;
+        Double longitudeDelta = 1.0;
+        //We need to wrap at latitude delta at 90 as that's the max value a latitude can take and
+        //longitude delta is wrapped at 180 for the same reason.
+        List<Shop> shortList = shopRepository.findShopsBetweenLatLong(
+                (latitude - latitudeDelta) % 90,
+                (latitude + latitudeDelta) % 90,
+                (longitude - longitudeDelta) % 180,
+                (longitude + longitudeDelta) % 180);
+        while (shortList.size() == 0 && (latitudeDelta <= 45 || longitudeDelta <= 180)) {
+            logger.debug("No shops found with latitude delta = " + latitudeDelta + " and longitude delta = " + longitudeDelta);
+            latitudeDelta = latitudeDelta * 2;
+            longitudeDelta = longitudeDelta * 2;
+            shortList = shopRepository.findShopsBetweenLatLong(
+                    (latitude - latitudeDelta) % 90,
+                    (latitude + latitudeDelta) % 90,
+                    (longitude - longitudeDelta) % 180,
+                    (longitude + longitudeDelta) % 180);
+        }
+        Shop nearest = null;
+        Double nearestDist = Double.MAX_VALUE;
+        Geocode queriedGeocode = new Geocode().withLat(latitude).withLng(longitude);
+        for (Shop shop : shortList) {
+            Geocode thisGeocode = new Geocode().withLat(shop.getAddress().getLatitude()).withLng(shop.getAddress().getLongitude());
+            Double dist = geoCodeService.distanceBetweenGeoCodes(queriedGeocode, thisGeocode);
+            if (dist < nearestDist) {
+                logger.debug("Found closer shop " + shop + " at a dist of " + dist);
+                nearest = shop;
+                nearestDist = dist;
+            }
+        }
+        logger.info("Nearest shop is " + nearest + " at a distance of " + nearestDist);
+        return nearest;
     }
 }

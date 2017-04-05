@@ -21,7 +21,7 @@ public class SwaggerConfiguration {
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.ant("/v1/shops"))
+                .paths(PathSelectors.regex("/v1/shops.*"))
                 .build();
     }
 
