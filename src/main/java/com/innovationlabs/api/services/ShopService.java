@@ -15,5 +15,5 @@ public interface ShopService {
 
     public Page<Shop> findAllShops(Pageable pageable) throws Exception;
 
-    public Page<Shop> findNearestShops(Pageable pageable, Double latitude, Double longitude) throws Exception;
+    public Page<Shop> findNearestShops(Double latitude, Double longitude, Pageable pageable) throws Exception;
 }

@@ -101,7 +101,7 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
-    public Page<Shop> findNearestShops(Pageable pageable, Double latitude, Double longitude) throws DataAccessException {
+    public Page<Shop> findNearestShops(Double latitude, Double longitude, Pageable pageable) throws DataAccessException {
 
         return null;
     }
