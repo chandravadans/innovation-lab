@@ -32,7 +32,7 @@ public class GeoCodeServiceTest {
     @Test
     public void addressToLatLongInvalid() throws Exception {
         Geocode geocode = geoCodeService.addressToLatLong("assdfferwgfw");
-        Assert.assertThat("Latitude mismatch", geocode, Matchers.is((Geocode) null));
+        Assert.assertThat("Should've been null", geocode, Matchers.is((Geocode) null));
     }
 
     @Test

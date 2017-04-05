@@ -12,11 +12,12 @@ import javax.persistence.Id;
 @Entity(name = "shops")
 @Data
 public class Shop {
+
     @Id
     @Column(unique = true)
     private String shopName;
+
     private Address address;
-    private boolean locked;
 
     public Shop withShopName(String shopName) {
         this.shopName = shopName;
