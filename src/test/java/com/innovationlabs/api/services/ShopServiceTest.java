@@ -97,4 +97,44 @@ public class ShopServiceTest {
         t.join();
         t2.join();
     }
+
+    @Test
+    public void getsClosestShop() throws Exception {
+        //Create 3 shops - Kharadi, Hinjewadi and Bengaluru
+        Shop kharadiShop = new Shop().withShopName("kharadi-shop")
+                .withAddress(new Address()
+                        .withAddress("EON IT Park, Kharadi")
+                        .withPostCode(411014)
+                        .withLatitude(18.5515)
+                        .withLongitude(73.9508));
+        shopRepository.save(kharadiShop);
+
+        Shop hinjewadiShop = new Shop().withShopName("hinjewadi-shop")
+                .withAddress(new Address()
+                        .withAddress("Hinjewadi Tech Park, Hinjewadi")
+                        .withPostCode(411054)
+                        .withLatitude(18.5917)
+                        .withLongitude(73.6838));
+        shopRepository.save(hinjewadiShop);
+
+        Shop bengaluruShop = new Shop().withShopName("bengaluru-shop")
+                .withAddress(new Address()
+                        .withAddress("Electronic city, Bengaluru")
+                        .withPostCode(560100)
+                        .withLatitude(12.8399)
+                        .withLongitude(77.6770));
+        shopRepository.save(bengaluruShop);
+
+        //Check which is closer to MG Road, Bengaluru
+        Shop closestToMgRoad = shopService.findNearestShop(12.973801,77.611885);
+        Assert.assertTrue("Wrong result, bengaluru should be closest to MG Road",closestToMgRoad.getShopName().equals("bengaluru-shop"));
+
+        //Check which is closer to London
+        Shop closestToLondon = shopService.findNearestShop(51.5074,-0.062553);
+        Assert.assertTrue("Wrong result, hinjewadi is closest to London", closestToLondon.getShopName().equals("hinjewadi-shop"));
+
+        //Check which is closest to Pune Airport
+        Shop closestToPuneAirport = shopService.findNearestShop(18.5789,73.9091);
+        Assert.assertTrue("Wrong result, kharadi is closest to pune airport", closestToPuneAirport.getShopName().equals("kharadi-shop"));
+    }
 }
