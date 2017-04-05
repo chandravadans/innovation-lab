@@ -1,5 +1,5 @@
 # About the application
-This is a Spring Boot application that aids Asset Managers manage their retail shops and enables customers to query the shop that's nearest to them. It does so by exposing a REST API, and uses a H2 in memory database as the datastore. It uses Google's [Geocode API](https://developers.google.com/maps/documentation/geocoding/intro) to try and figure out the approximate latitude and longitude based on the address given.
+This is a Spring Boot application that aids Asset Managers in managing their retail shops and enables customers to query the shop that's nearest to them. It does so by exposing a REST API, and uses a H2 in memory database as the datastore. It uses Google's [Geocode API](https://developers.google.com/maps/documentation/geocoding/intro) to try and figure out the approximate latitude and longitude based on the address given.
 
 # Building and running the application
 This application uses [Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html), so the only pre-requisite to building and running this application is having a Java 8 installation on your machine. And internet connectivity, obviously :)
