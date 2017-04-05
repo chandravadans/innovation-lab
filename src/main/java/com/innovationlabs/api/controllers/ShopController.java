@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by cv on 4/5/17.
  */
 @RestController
+@RequestMapping("/v1")
 public class ShopController {
     private ShopService shopService;
 
