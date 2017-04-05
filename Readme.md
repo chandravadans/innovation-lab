@@ -2,7 +2,7 @@
 This is a Spring Boot application that aids Asset Managers manage their retail shops and consumers to query which shop
 is nearest to them. It does so by exposing a REST API, and uses a H2 in memory database as the datastore. It uses Google's [Geocode API](https://developers.google.com/maps/documentation/geocoding/intro) to try and figure out the approximate latitude and longitude based on the address given.
 
-# Building and running this application
+# Building and running the application
 This application uses [Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html), so the only pre-requisite to building and this application is having a Java 8 installation on your machine.
 
  After downloading the project from github, if you're on a Linux or a Mac machine, change to the downloaded folder and do
@@ -28,7 +28,7 @@ This application uses [Gradle Wrapper](https://docs.gradle.org/current/userguide
  ```
  http://localhost:8080/swagger-ui.html
  ```
- # Salient Features of the application
+ # Salient features of the application
  * Uses JPA, so can easily switch the backend store to any SQL based datastore like Oracle, MySQL, etc.
  * Live REST API documentation that uses the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification).
  * Clients don't require a REST Client to interact with the app, it hosts an inbuilt page to do the same.
@@ -38,4 +38,4 @@ This application uses [Gradle Wrapper](https://docs.gradle.org/current/userguide
  * Runtime app health monitoring and metrics reporting at the [Metrics Endpoint](http://localhost:8080/metrics) (Works only when app is running). These can also be exported to a datastore and/or graphing software to visualise them in realtime.
  
  # Troubleshooting
- * In linux/mac systems doing `$chmod +x gradlew` might be needed to run `gradlew`
+ * On Linux/Mac systems, doing `$chmod +x gradlew` might be necessary before running `gradlew`
