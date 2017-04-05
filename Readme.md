@@ -28,7 +28,7 @@ This application uses [Gradle Wrapper](https://docs.gradle.org/current/userguide
  http://localhost:8080/swagger-ui.html
  ```
  # Salient features of the application
- * Uses JPA, so can easily switch the backend store to any SQL based datastore like Oracle, MySQL, etc.
+ * Uses JPA, so the backend store can easily be switched to any SQL based datastore like Oracle, MySQL, etc.
  * Live REST API documentation that uses the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification).
  * Clients don't require a REST Client to interact with the app, it hosts an inbuilt page to do the same.
  * Used [slf4j](https://www.slf4j.org), backed by [logback](https://logback.qos.ch) for flexible, lightning fast logging.
