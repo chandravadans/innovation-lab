@@ -30,3 +30,6 @@ This application uses [Gradle Wrapper](https://docs.gradle.org/current/userguide
  * Externalised YAML based property files for both dev and test environments that allow different configurations for different environments.
  * Ability to interact with the backend database while the app is running through the inbuilt [H2-Console](http://localhost:8080/h2-console) (Works only when the app is up and running)
  * Runtime app health monitoring and metrics reporting at the [Metrics Endpoint](http://localhost:8080/metrics) (Works only when app is running).
+ 
+ #Troubleshooting
+ * In linux/mac systems doing `$chmod +x gradlew` might be needed to run `gradlew`
