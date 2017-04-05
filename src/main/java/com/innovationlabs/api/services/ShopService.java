@@ -1,7 +1,6 @@
 package com.innovationlabs.api.services;
 
-import com.innovationlabs.api.domain.Shop;
-import lombok.Data;
+import com.innovationlabs.api.dao.Shop;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,4 +1,4 @@
-package com.innovationlabs.api.domain;
+package com.innovationlabs.api.dao;
 
 import lombok.Data;
 

@@ -8,8 +8,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * Created by cv on 4/5/17.
  */
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "com.innovationlabs.api")
-@EntityScan(basePackages = "com.innovationlabs.api")
 @ComponentScan(basePackages = "com.innovationlabs.api")
 public class AssetManager {
     public static void main(String[] args) {

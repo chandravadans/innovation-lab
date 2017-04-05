@@ -1,6 +1,6 @@
 package com.innovationlabs.api.services.jpa;
 
-import com.innovationlabs.api.domain.Shop;
+import com.innovationlabs.api.dao.Shop;
 import com.innovationlabs.api.repositories.ShopRepository;
 import com.innovationlabs.api.services.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
-
-import javax.xml.ws.ServiceMode;
 
 /**
  * Created by cv on 4/5/17.
