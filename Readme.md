@@ -41,3 +41,8 @@ This application uses [Gradle Wrapper](https://docs.gradle.org/current/userguide
  # Troubleshooting
  * On Linux/Mac systems, doing `$chmod +x gradlew` might be necessary before running `gradlew`
  * In case the database console doesn't show the required table, enter `jdbc:h2:mem:assets-db` as the jdbc url on the first page. Leave the user and password with their default values, `sa` and empty.
+ * If you're behind a proxy, the API calls might fail. In such a case, run the application with the following command:
+ ```
+ java -Dhttp.proxyHost=webproxy.com -Dhttp.proxyPort=8080 -jar build/libs/asset-manager-api-1.0.0.jar 
+ ```
+ * Please note that the API call to Google's GeoCode API is https and you might still receive a certificate error. In such a case, please make sure to include the proper certificate authority as a JVM parameter.
